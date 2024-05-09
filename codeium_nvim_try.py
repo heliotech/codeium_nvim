@@ -12,10 +12,10 @@ date@time: 2024-05-09@15:03:21
 version: 0.0.1
 """
 
-from scn.geometry.point import Point
-from scn.geometry.vector import Vector
+from point import Point
+from vector import Vector
 
-from scn.tech.helio import khelioNew as kh
+from uhelio import alt, azi, dayNr, dec, hra
 
 from rich.console import Console
 from rich.text import Text
@@ -33,23 +33,28 @@ heading.append(f" {ftitle} \u200b", style="bold navy_blue on green")
 ZWS = "\u200b"
 phantom_text = ZWS*30
 
+# ───────────────────────────────────────────────────────────────────────────────────────────────
+# vectors:
 u = Vector(1, 2, 3)
 v = Vector((0, 0, 0), (5, 7, 11))
 vectors = [u, v]
 
+# ───────────────────────────────────────────────────────────────────────────────────────────────
+# points:
 P = Point(1, 2, 3)
 Q = Point(4, 5, 6, name="Q")
 points = [P, Q]
 
+# ───────────────────────────────────────────────────────────────────────────────────────────────
 # khelio example:
 date = (5, 4)
-dnr = kh.dayNr(date)
-DEC = kh.dec(dnr)
+dnr = dayNr(date)
+DEC = dec(dnr)
 LAT = 52
 hr = 13
-HRA = kh.hra(hr)
-ALT = kh.alt(DEC, LAT, HRA)
-AZI = kh.azi(DEC, LAT, HRA)
+HRA = hra(hr)
+ALT = alt(DEC, LAT, HRA)
+AZI = azi(DEC, LAT, HRA)
 
 
 def main() -> None:
@@ -72,7 +77,7 @@ def main() -> None:
     print()
     summary = Text()
     summary.append("In summary: ")
-    summary.append("codium works great!", style="bold italic green")
+    summary.append("codeium works great!", style="bold italic green")
     cprint(summary)
 
     print("\n" + "─" * 20)
