@@ -33,19 +33,19 @@ heading.append(f" {ftitle} \u200b", style="bold navy_blue on green")
 ZWS = "\u200b"
 phantom_text = ZWS*30
 
-# ───────────────────────────────────────────────────────────────────────────────────────────────
+# ────────────────────────────────────────────────────────────────────────────
 # vectors:
 u = Vector(1, 2, 3)
 v = Vector((0, 0, 0), (5, 7, 11))
 vectors = [u, v]
 
-# ───────────────────────────────────────────────────────────────────────────────────────────────
+# ────────────────────────────────────────────────────────────────────────────
 # points:
 P = Point(1, 2, 3)
 Q = Point(4, 5, 6, name="Q")
 points = [P, Q]
 
-# ───────────────────────────────────────────────────────────────────────────────────────────────
+# ────────────────────────────────────────────────────────────────────────────
 # khelio example:
 date = (5, 4)
 dnr = dayNr(date)
@@ -58,6 +58,8 @@ AZI = azi(DEC, LAT, HRA)
 
 
 def main() -> None:
+    """ Entry point """
+
     cprint(heading, justify="center")
     print()
 
@@ -72,7 +74,8 @@ def main() -> None:
     cprint("khelio example:")
     cprint(f"input data: {date = }, {dnr = }, {LAT = }, {hr = }")
     fmt = ".3f"
-    cprint(f"calculations: {DEC = :{fmt}}, {HRA = :{fmt}}, {ALT = :{fmt}}, {AZI = :{fmt}}")
+    cprint(f"calculations: {DEC = :{fmt}}, {HRA = :{fmt}}, {ALT = :{fmt}}, "
+           f"{AZI = :{fmt}}")
 
     print()
     summary = Text()
@@ -82,7 +85,8 @@ def main() -> None:
 
     print("\n" + "─" * 20)
     cprint("btw…", style="italic")
-    cprint(f">{phantom_text} < (between `><` there is phantom text of {len(phantom_text) = })")
+    cprint(">{phantom_text} < (between `><` there is phantom text "
+           f"of {len(phantom_text) = })")
 
 
 if __name__ == "__main__":
